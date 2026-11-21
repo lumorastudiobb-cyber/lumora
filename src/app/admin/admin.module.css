@@ -1,0 +1,550 @@
+/* ==========================================================================
+   Exact CSS extracted from admin.html (Scoped for /admin route)
+   ========================================================================== */
+.adminRoot {
+    --color-plum: #2F172C;
+    --color-plum-admin: #1B0B19;
+    --color-sand: #F6F2EA;
+    --accent-sage: #8FA89B;
+
+    --bg-primary: var(--color-plum-admin);
+    --bg-secondary: var(--color-plum);
+    --text-light: var(--color-sand);
+    --text-muted: #B8A8B6;
+    --accent-color: var(--color-sand);
+    --theme-btn-bg: rgba(246, 242, 234, 0.05);
+
+    --glass-bg: rgba(47, 23, 44, 0.55);
+    --glass-border: rgba(246, 242, 234, 0.12);
+    --glass-shadow: rgba(15, 5, 14, 0.7);
+
+    --card-bg: rgba(246, 242, 234, 0.03);
+    --card-hover: rgba(246, 242, 234, 0.06);
+    --input-border: rgba(246, 242, 234, 0.15);
+
+    --logo-gradient: linear-gradient(90deg, #F6F2EA 0%, #FFFFFF 25%, #E5DDD0 50%, #FFFFFF 75%, #F6F2EA 100%);
+
+    --font-serif: var(--font-cormorant), 'Cormorant Garamond', serif;
+    --font-sans: var(--font-instrument), 'Instrument Sans', sans-serif;
+    --transition-theme: background-color 0.6s ease, color 0.4s ease, border-color 0.4s ease;
+
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    transition: var(--transition-theme);
+    display: flex;
+    flex-direction: column;
+}
+
+.adminRoot.lightMode {
+    --bg-primary: var(--color-sand);
+    --bg-secondary: #EFE9DD;
+    --text-light: var(--color-plum);
+    --text-muted: #4A2E46;
+    --accent-color: var(--color-plum);
+    --theme-btn-bg: rgba(47, 23, 44, 0.05);
+
+    --glass-bg: rgba(252, 250, 246, 0.88);
+    --glass-border: rgba(47, 23, 44, 0.12);
+    --glass-shadow: rgba(47, 23, 44, 0.06);
+
+    --card-bg: rgba(255, 253, 250, 0.85);
+    --card-hover: rgba(255, 253, 250, 1);
+    --input-border: rgba(47, 23, 44, 0.16);
+
+    --logo-gradient: linear-gradient(90deg, #2F172C 0%, #52274D 25%, #1B0B19 50%, #52274D 75%, #2F172C 100%);
+}
+
+.noiseOverlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.adminTopbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brandCluster {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.brandTitle {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    background: var(--logo-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.adminBadge {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    border: 1px solid var(--glass-border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+}
+
+.topbarActions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.pillBtn {
+    background: var(--theme-btn-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    color: var(--text-light);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pillBtn:hover {
+    border-color: var(--text-light);
+    background: var(--card-hover);
+}
+
+.pillBtnPrimary {
+    background: var(--text-light);
+    color: var(--bg-primary);
+    border-color: var(--text-light);
+}
+
+.adminContainer {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.kpiGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.kpiCard {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 15px 35px var(--glass-shadow);
+}
+
+.kpiLabel {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+}
+
+.kpiValue {
+    font-family: var(--font-serif);
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.kpiSub {
+    font-size: 0.75rem;
+    color: var(--accent-sage);
+    font-weight: 300;
+}
+
+.workspaceHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tabGroup {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.tabBtn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tabBtnActive {
+    color: var(--text-light);
+    border-bottom-color: var(--text-light);
+}
+
+.filterControls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.searchInput, .selectControl {
+    background: var(--card-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-light);
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+}
+
+.selectControl option {
+    background: var(--color-plum);
+    color: var(--color-sand);
+}
+
+.workspaceGrid {
+    display: grid;
+    grid-template-columns: 1.25fr 1.05fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.recordsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recordCard {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.recordCard:hover, .recordCardSelected {
+    border-color: var(--text-light);
+    background: var(--card-hover);
+}
+
+.recordMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.recordIdRow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.recordClient {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.recordPkg {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.recordFinancials {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+}
+
+.statusPill {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    background: rgba(143, 168, 155, 0.12);
+    color: var(--text-light);
+}
+
+.statusPillBalanceDue {
+    border-color: #d9a05b;
+    color: #f3c68f;
+}
+
+.statusPillPaidFull {
+    border-color: var(--accent-sage);
+    color: var(--accent-sage);
+}
+
+.statusPillUnread {
+    border-color: #e28743;
+    background: rgba(226, 135, 67, 0.18);
+    color: #f7b983;
+}
+
+.inspectorPane {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 2rem;
+    position: sticky;
+    top: 5.5rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 25px 50px var(--glass-shadow);
+}
+
+.inspectorEmpty {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.inspectorSection {
+    border-top: 1px solid var(--input-border);
+    padding-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.sectionHeading {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.detailRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.detailRow span:first-child {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.detailRow strong, .detailRow span:last-child {
+    text-align: right;
+    word-break: break-word;
+}
+
+.intakeSpecCard {
+    background: var(--card-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.paletteSwatchStrip {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.swatchChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-family: monospace;
+}
+
+.adminRoot.lightMode .swatchChip {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.swatchDot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.itineraryNoteBox {
+    background: rgba(0, 0, 0, 0.16);
+    border-left: 2px solid var(--accent-sage);
+    padding: 0.65rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+.adminRoot.lightMode .itineraryNoteBox {
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.specTagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.specTag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    background: rgba(143, 168, 155, 0.14);
+    border: 1px solid var(--glass-border);
+}
+
+.luxuryTextarea, .luxuryInput {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: var(--text-light);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+}
+
+.adminRoot.lightMode .luxuryTextarea, .adminRoot.lightMode .luxuryInput {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.deliverableBox {
+    border: 1px dashed var(--input-border);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.deliverableItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    background: var(--card-bg);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.messageLog {
+    max-height: 190px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.msgBubble {
+    background: var(--card-bg);
+    border-left: 2px solid var(--accent-sage);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    line-height: 1.45;
+}
+
+.msgBubbleClient {
+    border-left-color: #f3c68f;
+    background: rgba(243, 198, 143, 0.08);
+}
+
+.ledgerTableWrapper {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.ledgerTableWrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.ledgerTableWrapper th, .ledgerTableWrapper td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.ledgerTableWrapper th {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+    .kpiGrid { grid-template-columns: repeat(2, 1fr); }
+    .workspaceGrid { grid-template-columns: 1fr; }
+    .inspectorPane { position: static; max-height: none; }
+}
